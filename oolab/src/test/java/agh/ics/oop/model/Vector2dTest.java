@@ -29,8 +29,6 @@ class Vector2dTest {
 
         //then
         assertEquals("(2, 3)", v1ToString);
-
-
     }
 
     @Test
@@ -46,7 +44,6 @@ class Vector2dTest {
         assertTrue(v1.precedes(v2));
         assertTrue(v1.precedes(v4));
         assertFalse(v1.precedes(v3));
-
     }
 
     @Test
@@ -61,7 +58,6 @@ class Vector2dTest {
         assertTrue(v1.follows(v3));
         assertTrue(v1.follows(v4));
         assertFalse(v1.follows(v2));
-
     }
 
     @Test
@@ -75,7 +71,6 @@ class Vector2dTest {
 
         //then
         assertEquals(new Vector2d(3,4), vUpperRight);
-
     }
 
     @Test
@@ -103,8 +98,6 @@ class Vector2dTest {
 
         //then
         assertEquals(new Vector2d(5,7), sum);
-
-
     }
 
     @Test
@@ -119,7 +112,6 @@ class Vector2dTest {
 
         //then
         assertEquals(new Vector2d(-1,-1), difference);
-
     }
 
     @Test
@@ -132,6 +124,5 @@ class Vector2dTest {
 
         //then
         assertEquals(new Vector2d(-2,-3), opposite);
-
     }
 }
