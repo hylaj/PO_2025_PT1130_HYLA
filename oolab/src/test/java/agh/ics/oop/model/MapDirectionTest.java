@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MapDirectionTest {
 
     @Test
-    void NextReturnCorrectDirection() {
+    void nextReturnCorrectDirection() {
 
         //given
         MapDirection north = MapDirection.NORTH;
@@ -32,7 +32,7 @@ class MapDirectionTest {
     }
 
     @Test
-    void PreviousReturnCorrectDirection() {
+    void previousReturnCorrectDirection() {
 
         //given
         MapDirection north = MapDirection.NORTH;
