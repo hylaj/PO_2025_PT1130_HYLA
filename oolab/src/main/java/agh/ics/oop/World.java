@@ -5,6 +5,8 @@ import agh.ics.oop.model.MapDirection;
 import agh.ics.oop.model.MoveDirection;
 import agh.ics.oop.model.Vector2d;
 
+import java.util.List;
+
 public class World {
 
     static void main(String[] args) {
@@ -40,7 +42,7 @@ public class World {
 
     }
 
-    public static void run(MoveDirection[] directions) {
+    public static void run(List<MoveDirection> directions) {
 
         for (MoveDirection direction : directions) {
             switch (direction) {

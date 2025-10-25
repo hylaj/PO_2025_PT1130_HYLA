@@ -2,24 +2,27 @@ package agh.ics.oop;
 
 import agh.ics.oop.model.MoveDirection;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OptionsParser {
 
-    public static MoveDirection[] parse(String[] args) {
+    public static List<MoveDirection> parse(String[] args) {
 
-        MoveDirection[] temp = new MoveDirection[args.length];
-        int counter = 0;
+        List<MoveDirection> moves = new ArrayList<>();
+
+        if (args == null) {
+            return moves;
+        }
 
         for (String arg : args) {
             switch (arg){
-                case "f" -> temp[counter++]=MoveDirection.FORWARD;
-                case "b" -> temp[counter++]=MoveDirection.BACKWARD;
-                case "r" -> temp[counter++]=MoveDirection.RIGHT;
-                case "l" -> temp[counter++]=MoveDirection.LEFT;
+                case "f" -> moves.add(MoveDirection.FORWARD);
+                case "b" -> moves.add(MoveDirection.BACKWARD);
+                case "r" -> moves.add(MoveDirection.RIGHT);
+                case "l" -> moves.add(MoveDirection.LEFT);
             }
         }
-
-        MoveDirection[] moves = new MoveDirection[counter];
-        System.arraycopy(temp, 0, moves, 0, counter);  // create new array in order to get rid of 'null' values at the end of temporary array
 
         return moves;
     }
