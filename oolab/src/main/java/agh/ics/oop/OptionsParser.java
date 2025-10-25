@@ -9,6 +9,9 @@ public class OptionsParser {
 
     public static List<MoveDirection> parse(String[] args) {
 
+        // implementacja listy - najlepszy wybór to ArrayList, ponieważ
+        // lista jest tworzona raz, a potem tylko iterowana i odczytywana
+        // , a ArrayList zapewnia bardzo szybki dostęp po indeksie i efektywną iterację
         List<MoveDirection> moves = new ArrayList<>();
 
         if (args == null) {  // zabezpieczenie przed NullPointerException
