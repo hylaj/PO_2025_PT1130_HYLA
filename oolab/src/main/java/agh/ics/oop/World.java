@@ -28,14 +28,16 @@ public class World {
         System.out.println("Poprzedni: " + dir.previous());
         System.out.println("Wektor: " + dir.toUnitVector());
 
+        //test Animal
         Animal zwierze = new Animal();
         System.out.println(zwierze);
         zwierze.move(MoveDirection.BACKWARD);
-        System.out.println(zwierze);
-        zwierze.move(MoveDirection.BACKWARD);
-        System.out.println(zwierze);
-        zwierze.move(MoveDirection.BACKWARD);
-        System.out.println(zwierze);
+
+        //test Simulation
+        List<MoveDirection> directions = OptionsParser.parse(args);
+        List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
+        Simulation simulation = new Simulation(positions, directions);
+        simulation.run();
 
 
         System.out.println("System zakonczyl dzialanie");

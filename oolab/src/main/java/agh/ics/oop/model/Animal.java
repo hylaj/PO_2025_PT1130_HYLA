@@ -44,4 +44,11 @@ public class Animal {
         }
     }
 
+    public MapDirection getCurrentDirection() {
+        return currentDirection;
+    }
+
+    public Vector2d getCurrentPosition() {
+        return currentPosition;
+    }
 }

@@ -11,7 +11,7 @@ public class OptionsParser {
 
         List<MoveDirection> moves = new ArrayList<>();
 
-        if (args == null) {
+        if (args == null) {  // zabezpieczenie przed NullPointerException
             return moves;
         }
 
