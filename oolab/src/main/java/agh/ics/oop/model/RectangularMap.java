@@ -1,7 +1,6 @@
 package agh.ics.oop.model;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
 
 import agh.ics.oop.model.util.MapVisualizer;
 
@@ -56,7 +55,7 @@ public class RectangularMap implements WorldMap {
 
     @Override
     public boolean canMoveTo(Vector2d position){
-        return (position.follows(lowerLeftMapCorner) && position.follows(upperRightMapCorner) && !isOccupied(position));
+        return (position.follows(lowerLeftMapCorner) && position.precedes(upperRightMapCorner) && !isOccupied(position));
 
     }
 

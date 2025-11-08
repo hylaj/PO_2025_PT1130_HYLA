@@ -1,9 +1,6 @@
 package agh.ics.oop;
 
-import agh.ics.oop.model.Animal;
-import agh.ics.oop.model.MapDirection;
-import agh.ics.oop.model.MoveDirection;
-import agh.ics.oop.model.Vector2d;
+import agh.ics.oop.model.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -18,7 +15,8 @@ class SimulationTest {
         String []args = {"f", "b", "r", "f", "f", "l", "b", "b"};
         List<MoveDirection> directions = OptionsParser.parse(args);
         List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
-        Simulation simulation = new Simulation(positions, directions);
+        WorldMap map = new RectangularMap(4,4);
+        Simulation simulation = new Simulation(positions, directions,map);
         List<Animal> animals = simulation.getAnimals();
 
         //when
@@ -38,7 +36,8 @@ class SimulationTest {
         String[] args = {"x", "13", "z", "??", "hello"};
         List<MoveDirection> directions = OptionsParser.parse(args);
         List<Vector2d> positions = List.of(new Vector2d(1, 1), new Vector2d(0, 0));
-        Simulation simulation = new Simulation(positions, directions);
+        WorldMap map = new RectangularMap(4,4);
+        Simulation simulation = new Simulation(positions, directions, map);
         List<Animal> animals = simulation.getAnimals();
 
         // when
@@ -61,7 +60,8 @@ class SimulationTest {
         String[] args = {"f", "abc", "b", "r", "jump", "f", "f","l", "b", "left", "b", "???"};
         List<MoveDirection> directions = OptionsParser.parse(args);
         List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
-        Simulation simulation = new Simulation(positions, directions);
+        WorldMap map = new RectangularMap(4,4);
+        Simulation simulation = new Simulation(positions, directions, map);
         List<Animal> animals = simulation.getAnimals();
 
         // when
