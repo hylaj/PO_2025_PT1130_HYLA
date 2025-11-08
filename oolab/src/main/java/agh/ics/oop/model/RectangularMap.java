@@ -40,7 +40,7 @@ public class RectangularMap implements WorldMap {
         }
 
         animals.remove(animal.getCurrentPosition());
-        animal.move(direction);
+        animal.move(direction,this);
         animals.put(animal.getCurrentPosition(), animal);
     }
 
