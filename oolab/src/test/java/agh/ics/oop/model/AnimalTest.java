@@ -2,8 +2,6 @@ package agh.ics.oop.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class AnimalTest {
@@ -16,12 +14,13 @@ class AnimalTest {
     void animalShouldNotMoveOutsideMap() {
         //given
         Animal animal = new Animal(new Vector2d(4, 4));
+        WorldMap map = new RectangularMap(4, 4);
 
         //when
-        animal.move(MoveDirection.FORWARD);
-        animal.move(MoveDirection.FORWARD);
-        animal.move(MoveDirection.LEFT);
-        animal.move(MoveDirection.FORWARD);
+        animal.move(MoveDirection.FORWARD, map);
+        animal.move(MoveDirection.FORWARD, map);
+        animal.move(MoveDirection.LEFT, map);
+        animal.move(MoveDirection.FORWARD, map);
 
         //then
         assertTrue(animal.getCurrentPosition().precedes(Animal.UPPER_RIGHT) && animal.getCurrentPosition().follows(Animal.LOWER_LEFT));
@@ -32,13 +31,14 @@ class AnimalTest {
     void animalShouldMoveToCorrectPosition()  {
         //given
         Animal animal = new Animal(new Vector2d(2, 2));
+        WorldMap map = new RectangularMap(4, 4);
 
         //when
-        animal.move(MoveDirection.FORWARD);
-        animal.move(MoveDirection.RIGHT);
-        animal.move(MoveDirection.FORWARD);
-        animal.move(MoveDirection.LEFT);
-        animal.move(MoveDirection.BACKWARD);
+        animal.move(MoveDirection.FORWARD, map);
+        animal.move(MoveDirection.RIGHT, map);
+        animal.move(MoveDirection.FORWARD, map);
+        animal.move(MoveDirection.LEFT, map);
+        animal.move(MoveDirection.BACKWARD, map);
 
         //then
         assertTrue(animal.isAt(new Vector2d(3,2)));
@@ -48,10 +48,11 @@ class AnimalTest {
     void animalShouldHaveCorrectDirection(){
         //given
         Animal animal = new Animal(new Vector2d(2, 2));
+        WorldMap map = new RectangularMap(4, 4);
 
         //when
-        animal.move(MoveDirection.LEFT);
-        animal.move(MoveDirection.FORWARD);
+        animal.move(MoveDirection.LEFT, map);
+        animal.move(MoveDirection.FORWARD, map);
 
         //then
         assertEquals(MapDirection.WEST, animal.getCurrentDirection());

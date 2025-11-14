@@ -18,17 +18,19 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "Direction: " + currentDirection +
-                ", Position: " + currentPosition +
-                '}';
+        return switch(currentDirection) {
+            case NORTH -> "^";
+            case WEST -> "<";
+            case EAST -> ">";
+            case SOUTH -> "v";
+        };
     }
 
     public boolean isAt(Vector2d position) {
         return currentPosition.equals(position);
     }
 
-    public void move(MoveDirection direction) {
+    public void move(MoveDirection direction, MoveValidator moveValidator) {
 
         Vector2d newPosition = currentPosition;
 
@@ -39,7 +41,7 @@ public class Animal {
             case BACKWARD -> newPosition = currentPosition.subtract(currentDirection.toUnitVector());
         }
 
-        if (newPosition.precedes(UPPER_RIGHT) && newPosition.follows(LOWER_LEFT)) {
+        if (moveValidator.canMoveTo(newPosition)) {
             currentPosition = newPosition;
         }
     }
