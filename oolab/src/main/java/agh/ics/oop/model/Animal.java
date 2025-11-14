@@ -1,8 +1,8 @@
 package agh.ics.oop.model;
 
+import java.util.Objects;
+
 public class Animal {
-    public static final Vector2d LOWER_LEFT = new Vector2d(0, 0);
-    public static final Vector2d UPPER_RIGHT = new Vector2d(4, 4);
 
     private  MapDirection currentDirection = MapDirection.NORTH;
     private  Vector2d currentPosition;
@@ -53,4 +53,21 @@ public class Animal {
     public Vector2d getCurrentPosition() {
         return currentPosition;
     }
+
+    @Override
+    public boolean equals(Object other){
+        if (this == other)
+            return true;
+        if (!(other instanceof Animal))
+            return false;
+        Animal that = (Animal) other;
+        return this.currentDirection == that.currentDirection
+                && this.currentPosition.equals(that.currentPosition);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(currentDirection, currentPosition);
+    }
+
 }

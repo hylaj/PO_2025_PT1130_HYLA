@@ -34,7 +34,8 @@ public class RectangularMap implements WorldMap {
     @Override
     public void move(Animal animal, MoveDirection direction){
 
-        if (objectAt(animal.getCurrentPosition()) != animal){
+        Animal mapAnimal = objectAt(animal.getCurrentPosition());
+        if (mapAnimal == null || !mapAnimal.equals(animal)) {
             return;
         }
 

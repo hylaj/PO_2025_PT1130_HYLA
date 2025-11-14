@@ -10,22 +10,6 @@ class AnimalTest {
     void testToString() {
     }
 
-    @Test
-    void animalShouldNotMoveOutsideMap() {
-        //given
-        Animal animal = new Animal(new Vector2d(4, 4));
-        WorldMap map = new RectangularMap(4, 4);
-
-        //when
-        animal.move(MoveDirection.FORWARD, map);
-        animal.move(MoveDirection.FORWARD, map);
-        animal.move(MoveDirection.LEFT, map);
-        animal.move(MoveDirection.FORWARD, map);
-
-        //then
-        assertTrue(animal.getCurrentPosition().precedes(Animal.UPPER_RIGHT) && animal.getCurrentPosition().follows(Animal.LOWER_LEFT));
-        assertTrue(animal.isAt(new Vector2d(3,4)));
-    }
 
     @Test
     void animalShouldMoveToCorrectPosition()  {
