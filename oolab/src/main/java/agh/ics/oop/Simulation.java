@@ -12,7 +12,7 @@ public class Simulation {
 
     private final List<Animal> animals;
     private final List<MoveDirection> moves;
-    WorldMap worldMap;
+    private final WorldMap worldMap;
 
     public List<Animal> getAnimals() {
         return animals;
@@ -42,4 +42,5 @@ public class Simulation {
             System.out.println(worldMap);
         }
     }
+
 }

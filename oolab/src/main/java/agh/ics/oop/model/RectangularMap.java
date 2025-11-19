@@ -34,7 +34,7 @@ public class RectangularMap implements WorldMap {
     @Override
     public void move(Animal animal, MoveDirection direction){
 
-        Animal mapAnimal = objectAt(animal.getCurrentPosition());
+        WorldElement mapAnimal = objectAt(animal.getCurrentPosition());
         if (mapAnimal == null || !mapAnimal.equals(animal)) {
             return;
         }
@@ -50,7 +50,7 @@ public class RectangularMap implements WorldMap {
     }
 
     @Override
-    public Animal objectAt(Vector2d position){
+    public WorldElement objectAt(Vector2d position){
         return animals.get(position);
     }
 
