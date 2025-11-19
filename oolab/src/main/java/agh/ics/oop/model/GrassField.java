@@ -1,6 +1,5 @@
 package agh.ics.oop.model;
 
-import agh.ics.oop.model.util.MapVisualizer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,12 +7,9 @@ import java.util.Random;
 
 import static java.lang.Math.sqrt;
 
-public class GrassField implements WorldMap {
+public class GrassField extends AbstractWorldMap{
 
     private final Map<Vector2d, Grass> grass = new HashMap<>();
-
-    private final Map<Vector2d, Animal> animals = new HashMap<>();
-    private final MapVisualizer mapVisualizer = new MapVisualizer(this);
 
     public GrassField(int grassQuantity) {
 
@@ -34,53 +30,17 @@ public class GrassField implements WorldMap {
     }
 
     @Override
-    public boolean place(Animal animal) {
-        Vector2d position = animal.getCurrentPosition();
-        if(canMoveTo(position)){
-            animals.put(position, animal);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public void move(Animal animal, MoveDirection direction) {
-
-        WorldElement mapAnimal = objectAt(animal.getCurrentPosition());
-        if (mapAnimal == null || !mapAnimal.equals(animal)) {
-            return;
-        }
-
-        animals.remove(animal.getCurrentPosition());
-        animal.move(direction,this);
-        animals.put(animal.getCurrentPosition(), animal);
-    }
-
-
-    @Override
-    public boolean isOccupied(Vector2d position){
-        return objectAt(position) != null;
-    }
-
-    @Override
     public WorldElement objectAt(Vector2d position) {
-        Animal animal = animals.get(position);
-        if(animal != null)
-            return animal;
-        else
-            return grass.get(position);
-    }
+        if (super.objectAt(position) != null)
+            return super.objectAt(position);
 
-    @Override
-    public boolean canMoveTo(Vector2d position){
-        return !animals.containsKey(position);
-
+        return grass.get(position);
     }
 
     @Override
     public String toString(){
 
-       Vector2d upperRightMapCorner = grass.keySet().iterator().next();
+        Vector2d upperRightMapCorner = grass.keySet().iterator().next();
         Vector2d lowerLeftMapCorner= upperRightMapCorner;
 
         for (Vector2d position : grass.keySet()) {

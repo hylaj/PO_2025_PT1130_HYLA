@@ -34,6 +34,11 @@ public class Simulation {
 
     public void run(){
 
+        if (animals.isEmpty()) {  // sprawdzenie, czy na liscie sa jakies zwierzeta, aby uniknac dzielenia przez 0.
+                System.err.println("Brak zwierzat.");
+            return;
+        }
+
         for (int i=0; i<moves.size(); i++) {
             int index=i%animals.size();
             Animal animal = animals.get(index);
