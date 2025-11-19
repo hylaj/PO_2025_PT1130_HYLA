@@ -1,9 +1,7 @@
 package agh.ics.oop.model;
 
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static java.lang.Math.sqrt;
 
@@ -40,22 +38,32 @@ public class GrassField extends AbstractWorldMap{
     @Override
     public String toString(){
 
-        Vector2d upperRightMapCorner = grass.keySet().iterator().next();
-        Vector2d lowerLeftMapCorner= upperRightMapCorner;
+        Collection<WorldElement> elements = getElements();
 
-        for (Vector2d position : grass.keySet()) {
+        if (elements.isEmpty()) {
+            return mapVisualizer.draw(new Vector2d(0, 0), new Vector2d(0, 0));
+        }
+
+        Vector2d upperRightMapCorner = elements.iterator().next().getCurrentPosition();
+        Vector2d lowerLeftMapCorner = upperRightMapCorner;
+
+        for (WorldElement element : elements) {
+            Vector2d position = element.getCurrentPosition();
+
             lowerLeftMapCorner = position.lowerLeft(lowerLeftMapCorner);
             upperRightMapCorner = position.upperRight(upperRightMapCorner);
         }
-
-        for (Vector2d position : animals.keySet()) {
-            lowerLeftMapCorner = position.lowerLeft(lowerLeftMapCorner);
-            upperRightMapCorner = position.upperRight(upperRightMapCorner);
-        }
-
 
         return mapVisualizer.draw(lowerLeftMapCorner, upperRightMapCorner);
 
+    }
+
+    @Override
+    public Collection<WorldElement> getElements() {
+        Collection<WorldElement> elements = super.getElements();
+        elements.addAll(grass.values());
+
+        return elements;
 
     }
 
