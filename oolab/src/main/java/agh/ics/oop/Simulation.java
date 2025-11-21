@@ -12,7 +12,7 @@ public class Simulation {
 
     private final List<Animal> animals;
     private final List<MoveDirection> moves;
-    WorldMap worldMap;
+    private final WorldMap worldMap;
 
     public List<Animal> getAnimals() {
         return animals;
@@ -34,6 +34,11 @@ public class Simulation {
 
     public void run(){
 
+        if (animals.isEmpty()) {  // sprawdzenie, czy na liscie sa jakies zwierzeta, aby uniknac dzielenia przez 0.
+                System.err.println("Brak zwierzat.");
+            return;
+        }
+
         for (int i=0; i<moves.size(); i++) {
             int index=i%animals.size();
             Animal animal = animals.get(index);
@@ -42,4 +47,5 @@ public class Simulation {
             System.out.println(worldMap);
         }
     }
+
 }

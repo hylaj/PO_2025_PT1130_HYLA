@@ -4,9 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RectangularMapTest {
-
-    private final RectangularMap map = new RectangularMap(4,4);
+class GrassFieldTest {
+    private final GrassField map = new GrassField(10);
 
     @Test
     void canBePlacedOnEmptyField() {
@@ -40,12 +39,6 @@ class RectangularMapTest {
         assertTrue(map.canMoveTo(new Vector2d(2,2)));
     }
 
-    @Test
-    void cannotMoveOutOfMap(){
-
-        assertFalse(map.canMoveTo(new Vector2d(-1, 0)));
-        assertFalse(map.canMoveTo(new Vector2d(6, 3)));
-    }
 
     @Test
     void MoveWhenPossibleAndNotMoveWhenNotPossible(){
@@ -88,6 +81,5 @@ class RectangularMapTest {
         assertNull(map.objectAt(new Vector2d(3, 2)));
 
     }
-
 
 }
