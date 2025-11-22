@@ -1,4 +1,6 @@
 package agh.ics.oop.model.util;
 
-public record Boundary() {
+import agh.ics.oop.model.Vector2d;
+
+public record Boundary(Vector2d lowerLeftMapCorner, Vector2d upperRightMapCorner) {
 }
