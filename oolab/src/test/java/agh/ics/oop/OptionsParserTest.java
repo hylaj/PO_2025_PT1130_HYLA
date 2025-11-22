@@ -30,16 +30,13 @@ class OptionsParserTest {
     }
 
     @Test
-    void parserShouldReturnEmptyListWhenInvalidCommandsProvided(){
+    void parserShouldThrowExceptionWhenInvalidInputProvided(){
 
         //given
         String[] input = {"x", "g", "z", "123", "forward"};
 
-        //when
-        List<MoveDirection> result = OptionsParser.parse(input);
-
-        //then
-        assertTrue(result.isEmpty());
+        //when&then
+        assertThrows(IllegalArgumentException.class, () -> OptionsParser.parse(input));
     }
 
     @Test
