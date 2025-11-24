@@ -50,7 +50,6 @@ public class Simulation {
             Animal animal = animals.get(index);
 
             worldMap.move(animal, moves.get(i));
-            System.out.println(worldMap);
         }
     }
 

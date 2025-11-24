@@ -4,6 +4,7 @@ import agh.ics.oop.model.exception.IncorrectPositionException;
 import agh.ics.oop.model.util.Boundary;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * The interface responsible for interacting with the map of the world.
@@ -53,4 +54,6 @@ public interface WorldMap extends MoveValidator {
     Collection<WorldElement> getElements();
 
     Boundary getCurrentBounds();
+
+
 }

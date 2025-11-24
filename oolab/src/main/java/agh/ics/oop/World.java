@@ -3,6 +3,7 @@ package agh.ics.oop;
 import agh.ics.oop.model.*;
 import agh.ics.oop.model.exception.IncorrectPositionException;
 
+import java.io.Console;
 import java.util.List;
 
 public class World {
@@ -13,14 +14,15 @@ public class World {
         try{
 
             //test Simulation and GrassField
-            WorldMap grassMap = new GrassField(10);
+
+            AbstractWorldMap grassMap = new GrassField(10);
             List<MoveDirection> directions = OptionsParser.parse(args);
+            grassMap.addObserver(new ConsoleMapDisplay());
 
 
-
-        List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
-        Simulation simulation = new Simulation(positions, directions, grassMap);
-        simulation.run();
+            List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
+            Simulation simulation = new Simulation(positions, directions, grassMap);
+            simulation.run();
         }
         catch (IllegalArgumentException e){
             System.out.println("Illegal argument given:" + e.getMessage());
