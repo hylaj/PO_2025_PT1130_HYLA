@@ -1,9 +1,6 @@
 package agh.ics.oop;
 
 import agh.ics.oop.model.*;
-import agh.ics.oop.model.exception.IncorrectPositionException;
-
-import java.io.Console;
 import java.util.List;
 
 public class World {

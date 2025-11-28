@@ -1,6 +1,5 @@
 package agh.ics.oop.model;
 
-import javax.swing.*;
 
 public class ConsoleMapDisplay implements MapChangeListener{
 
