@@ -1,5 +1,6 @@
 package agh.ics.oop.model;
 
+import agh.ics.oop.model.exception.IncorrectPositionException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,10 +14,8 @@ class RectangularMapTest {
         //given
         Animal animal = new Animal(new Vector2d(2, 3));
 
-        //when
-        map.place(animal);
-
-        //then
+        //when & then
+        assertDoesNotThrow(() -> map.place(animal));
         assertTrue(map.isOccupied(new Vector2d(2, 3)));
 
     }
@@ -29,8 +28,10 @@ class RectangularMapTest {
         Animal otherAnimal = new Animal(new Vector2d(2,3));
 
         //when&then
-        assertTrue(map.place(animal));
-        assertFalse(map.place(otherAnimal));
+        assertDoesNotThrow(() -> map.place(animal));
+        assertThrows(IncorrectPositionException.class,
+                () -> map.place(otherAnimal)
+        );
 
     }
 
@@ -55,8 +56,12 @@ class RectangularMapTest {
         Animal otherAnimal = new Animal(new Vector2d(2,2));
 
         //when
-        map.place(animal);
-        map.place(otherAnimal);
+        try {
+            map.place(animal);
+            map.place(otherAnimal);
+        } catch (IncorrectPositionException e) {
+            fail("Eexception while placing animal: " + e.getMessage());
+        }
         map.move(otherAnimal, MoveDirection.FORWARD);
 
         //then
@@ -78,7 +83,12 @@ class RectangularMapTest {
         Animal animal = new Animal(new Vector2d(3, 3));
 
         //when
-        map.place(animal);
+        try {
+            map.place(animal);
+        } catch (IncorrectPositionException e) {
+            fail("Eexception while placing animal: " + e.getMessage());
+        }
+
 
         //then
         assertTrue(map.isOccupied(new Vector2d(3, 3)));
