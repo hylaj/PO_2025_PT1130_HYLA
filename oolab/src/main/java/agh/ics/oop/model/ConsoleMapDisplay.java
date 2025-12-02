@@ -8,6 +8,7 @@ public class ConsoleMapDisplay implements MapChangeListener{
     @Override
     public void mapChanged(WorldMap worldMap, String message){
         updateCounter++;
+        System.out.println("Map ID: " + worldMap.getId());
         System.out.println("Update No. " + updateCounter);
         System.out.println(message);
         System.out.println(worldMap);
