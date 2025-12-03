@@ -40,9 +40,6 @@ public class World {
         catch (IllegalArgumentException e){
             System.out.println("Illegal argument given:" + e.getMessage());
         }
-        catch (InterruptedException e) {
-            System.out.printf("Interrupted: %s%n", e.getMessage());
-        }
 
         System.out.println("System zakonczyl dzialanie");
 
