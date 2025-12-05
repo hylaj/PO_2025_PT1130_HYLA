@@ -10,6 +10,7 @@ public abstract class AbstractWorldMap implements WorldMap{
     protected final Map<Vector2d, Animal> animals = new HashMap<>();
     protected final MapVisualizer mapVisualizer = new MapVisualizer(this);
     protected final List<MapChangeListener> observers = new ArrayList<>();
+    private final UUID uuid = UUID.randomUUID();
 
     public void addObserver(MapChangeListener observer) {
         observers.add(observer);
@@ -81,6 +82,10 @@ public abstract class AbstractWorldMap implements WorldMap{
         return mapVisualizer.draw(currentBounds.lowerLeftMapCorner(), currentBounds.upperRightMapCorner());
     }
 
+    @Override
+    public UUID getId(){
+        return uuid;
+    }
 
 
 

@@ -1,6 +1,8 @@
 package agh.ics.oop;
 
 import agh.ics.oop.model.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class World {
@@ -11,15 +13,29 @@ public class World {
         try{
 
             //test Simulation and GrassField
+            ArrayList<Simulation> simulations = new ArrayList<>();
+            List<MoveDirection> directions = OptionsParser.parse(args);
+            List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
+            ConsoleMapDisplay display = new ConsoleMapDisplay();
+
+            for(int i = 0; i < 100; i++) {
 
             AbstractWorldMap grassMap = new GrassField(10);
-            List<MoveDirection> directions = OptionsParser.parse(args);
-            grassMap.addObserver(new ConsoleMapDisplay());
+            AbstractWorldMap rectMap = new RectangularMap(5,5);
 
+            grassMap.addObserver(display);
+            rectMap.addObserver(display);
 
-            List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
-            Simulation simulation = new Simulation(positions, directions, grassMap);
-            simulation.run();
+            Simulation simulation_grass = new Simulation(positions, directions, grassMap);
+            Simulation simulation_rect = new Simulation(positions, directions, rectMap);
+
+            simulations.add(simulation_grass);
+            simulations.add(simulation_rect);
+            }
+
+            SimulationEngine simulation_engine = new SimulationEngine(simulations);
+            simulation_engine.runAsyncInThreadPool();
+            simulation_engine.awaitSimulationsEnd();
         }
         catch (IllegalArgumentException e){
             System.out.println("Illegal argument given:" + e.getMessage());

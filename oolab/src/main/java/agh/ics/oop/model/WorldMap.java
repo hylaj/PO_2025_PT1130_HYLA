@@ -5,6 +5,7 @@ import agh.ics.oop.model.util.Boundary;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * The interface responsible for interacting with the map of the world.
@@ -54,6 +55,8 @@ public interface WorldMap extends MoveValidator {
     Collection<WorldElement> getElements();
 
     Boundary getCurrentBounds();
+
+    UUID getId();
 
 
 }

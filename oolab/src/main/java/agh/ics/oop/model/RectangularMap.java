@@ -28,4 +28,6 @@ public class RectangularMap extends AbstractWorldMap{
     public Boundary  getCurrentBounds() {
         return boundary;
     }
+
+
 }
