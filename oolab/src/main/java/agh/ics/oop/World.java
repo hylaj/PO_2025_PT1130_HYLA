@@ -18,7 +18,7 @@ public class World {
             List<Vector2d> positions = List.of(new Vector2d(2,2), new Vector2d(3,4));
             ConsoleMapDisplay display = new ConsoleMapDisplay();
 
-            for(int i = 0; i < 1000; i++) {
+            for(int i = 0; i < 100; i++) {
 
             AbstractWorldMap grassMap = new GrassField(10);
             AbstractWorldMap rectMap = new RectangularMap(5,5);
@@ -34,7 +34,7 @@ public class World {
             }
 
             SimulationEngine simulation_engine = new SimulationEngine(simulations);
-            simulation_engine.runAsync();
+            simulation_engine.runAsyncInThreadPool();
             simulation_engine.awaitSimulationsEnd();
         }
         catch (IllegalArgumentException e){
