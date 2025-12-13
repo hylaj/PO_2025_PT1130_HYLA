@@ -50,6 +50,12 @@ public class Simulation implements Runnable {
             Animal animal = animals.get(index);
 
             worldMap.move(animal, moves.get(i));
+
+            try{
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.printf("Thread interrupted -> %s%n", e.getMessage());
+            }
         }
     }
 
