@@ -1,4 +1,4 @@
-# Object-Oriented Programming – Animal World Simulation
+# OOP – Animal World Simulation
 
 A Java simulation of a 2D world with animals and grass moving around a grid. Built as coursework for the **Object-Oriented Programming** course during my master's studies at **AGH University**, Kraków, following the assignments from the course repository [Soamid/obiektowe-lab](https://github.com/Soamid/obiektowe-lab).
 
