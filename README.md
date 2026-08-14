@@ -21,13 +21,13 @@ Animals move and turn on a map based on simple move commands (`f`/`b`/`l`/`r`). 
 
 ## How to run
 
-\`\`\`bash
+```bash
 git clone https://github.com/hylaj/PO_2025_PT1130_HYLA.git
 cd PO_2025_PT1130_HYLA/oolab
-
+ 
 ./gradlew test   # run unit tests
 ./gradlew run    # run the console version (agh.ics.oop.World)
-\`\`\`
+```
 
 For the JavaFX GUI, open the \`oolab\` folder in IntelliJ IDEA and run \`WorldGUI.java\` directly.
 
