@@ -6,11 +6,11 @@ A Java simulation of a 2D world with animals and grass moving around a grid. Bui
 
 Animals move and turn on a map based on simple move commands (`f`/`b`/`l`/`r`). The map validates moves, notifies observers of changes (observer pattern), and can be viewed either as ASCII art in the console or in a JavaFX window. The project demonstrates core OOP concepts: interfaces, abstract classes, inheritance, encapsulation, custom exceptions and multithreading.
 
-![Input arguments](images/start.png)
+![Input arguments](images/start.jpg)
 
 ![App view](images/1.png)
 
-![App view, animals moving according to given args](images/2.png)
+![App view, animals moving according to given args](images/2.jpg)
 
 
 ## Tech stack
